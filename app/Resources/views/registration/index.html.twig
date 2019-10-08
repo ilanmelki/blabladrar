@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Registrations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Numéro</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for registration in registrations %}
+            <tr>
+                <td><a href="{{ path('registration_show', { 'id': registration.id }) }}">{{ registration.id }}</a></td>
+                <td>{{ registration.lastName }}</td>
+                <td>{{ registration.firstName }}</td>
+                <td>{{ registration.mail }}</td>
+                <td>{{ registration.password }}</td>
+                <td>{{ registration.number }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('registration_show', { 'id': registration.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('registration_edit', { 'id': registration.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('registration_new') }}">Create a new registration</a>
+        </li>
+    </ul>
+{% endblock %}
