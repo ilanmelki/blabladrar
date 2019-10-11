@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Profil</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ profil.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ profil.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ profil.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ profil.adresse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <li>
+
+        <a href="{{ path('conducteur_new') }}"><input type="radio" name="Genre" value="Homme"> conducteur<br> </a>
+    </li>
+    <li>
+        <a href="{{ path('passager_new') }}"><input type="radio" name="Genre" value="Femme"> passager</a>
+    </li>
+
+
+
+    <ul>
+        <li>
+            <a href="{{ path('profil_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('profil_edit', { 'id': profil.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+{% endblock %}

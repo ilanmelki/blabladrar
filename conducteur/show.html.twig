@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Conducteur</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ conducteur.id }}</td>
+            </tr>
+            <tr>
+                <th>Typevoiture</th>
+                <td>{{ conducteur.typevoiture }}</td>
+            </tr>
+            <tr>
+                <th>Nbplaces</th>
+                <td>{{ conducteur.nbplaces }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if conducteur.date %}{{ conducteur.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Heure</th>
+                <td>{% if conducteur.heure %}{{ conducteur.heure|date('H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('conducteur_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('conducteur_edit', { 'id': conducteur.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
