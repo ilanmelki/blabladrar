@@ -27,9 +27,11 @@
 
     {% block body %} {% endblock %}
         {% block javascripts %}{% endblock %}
+    {% block fos_user_content %}{% endblock %}
 
 
-    <a href="login.php">Déjà un compte ? Connectez-vous ici</a>
+
+
     <footer>
 
     </footer>
@@ -51,6 +53,32 @@
             background-image: url("{{ asset('bgApp.png') }}");
             height: 300px;
             box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+
+        }
+
+        h1{
+            font-family: Comfortaa;
+        }
+        #username{
+            margin-left: 30px
+        ;
+
+        }
+
+        #password{
+            margin-left: 62px
+        ;
+        }
+
+        #remember_me{
+            margin-left: 40em;
+            margin-top: -60px;
+        }
+
+        label {
+            font-size: 20px;
+            margin-left: 4em;
+            font-family: Comfortaa;
 
         }
 
@@ -76,7 +104,7 @@
         }
         .button{
             padding-left: 26em;
-            padding-top: 2em;
+            padding-top: 3em;
             font-family: 'Comfortaa', cursive , bold;
         }
 
@@ -92,7 +120,7 @@
             padding-left: 4em;
         }
         .espace {
-            height: 25px;
+            height: 30px;
         }
 
         .block{
@@ -198,6 +226,7 @@
             transition: 1s;
             box-shadow: 6px 6px 0 black;
             transform: skewX(-15deg);
+            margin-top: 30px;
         }
 
         .cta:focus {
