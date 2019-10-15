@@ -1,50 +1,43 @@
-
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8" />
 
-        <title>{% block title %}Blabladrar{% endblock %}</title>
+    <title>{% block title %}Blabladrar{% endblock %}</title>
 
-        {% block stylesheets %}
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        {% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% endblock %}
+</head>
+<body>
 
+<header>
 
-
-    </head>
-
-    <body>
-
-    <header>
-
-        <div class="zoom">
-            <div>
-                <img id="logo" src="{{ asset('logo.PNG') }}">
-                <img id="region" src="{{ asset('region.png') }}">
-            </div>
-
-            <div class="account">
-
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
-                    <a href class="logout"{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                    </a>
-                {% else %}
-                    <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                {% endif %}
-
-            </div>
-
+    <div class="zoom">
+        <div>
+            <img id="logo" src="{{ asset('logo.PNG') }}">
+            <img id="region" src="{{ asset('region.png') }}">
         </div>
 
 
 
+    </div>
 
 
-    </header>
+
+</header>
+<div>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+        <a href="{{ path('fos_user_security_logout') }}">
+            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+        </a>
+    {% else %}
+        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+    {% endif %}
+
+
+
 
 
 
@@ -57,11 +50,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
-        {% block javascripts %}{% endblock %}
+    {% block javascripts %}{% endblock %}
 
-        {% block fos_user_content %}
+    {% block fos_user_content %}
 
-        {% endblock %}
+    {% endblock %}
 
 
 
@@ -353,5 +346,5 @@
         }
     </style>
 
-    </body>
+</body>
 </html>

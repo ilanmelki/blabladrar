@@ -7,4 +7,12 @@
     {% if targetUrl %}
     <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
     {% endif %}
+
+    <li>
+
+        <a href="{{ path('conducteur_new') }}">conducteur</a>
+    </li>
+    <li>
+        <a href="{{ path('passager_new') }}">passager</a>
+    </li>
 {% endblock fos_user_content %}

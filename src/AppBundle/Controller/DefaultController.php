@@ -34,5 +34,14 @@ class DefaultController extends Controller
     {
         return $this->render('Exemples_roles/helloworld-admin.html.twig');
     }
+
+    /**
+     * @Route("/testConfirmed", name="testConfirmed")
+     */
+    public function testConfirmed(Request $request)
+    {
+        return $this->render('/confirmed.html.twig');
+    }
+
 }
 

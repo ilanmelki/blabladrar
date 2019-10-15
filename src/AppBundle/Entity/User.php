@@ -19,6 +19,58 @@ class User extends FosUser
      */
     protected $id;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $first_name;
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $last_name;
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return User
+     */
+    public function setFirstName($firstName)
+    {
+        $this->first_name = $firstName;
+        return $this;
+    }
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->first_name;
+    }
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return User
+     */
+    public function setLastName($lastName)
+    {
+        $this->last_name = $lastName;
+        return $this;
+    }
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->last_name;
+    }
+
     public function __construct()
     {
         parent::__construct();

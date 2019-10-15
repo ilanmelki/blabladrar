@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends "/layout.html.twig" %}
 
 {% block body %}
     <div id="wrapper">
@@ -39,6 +39,13 @@
                     <a href="https://symfony.com/doc/{{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION')[:3] }}/page_creation.html">
                         How to create your first page in Symfony
                     </a>
+                <li>
+
+                    <a href="{{ path('conducteur_new') }}">conducteur</a>
+                </li>
+                <li>
+                    <a href="{{ path('passager_new') }}">passager</a>
+                </li>
                 </p>
             </div>
 

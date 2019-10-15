@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends "/layout.html.twig" %}
 
 {% block body %}
     <h1>Passager creation</h1>
@@ -13,7 +13,7 @@
             <a href="{{ path('passager_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('profil_index') }}">changer de profil</a>
+            <a href="{{ path('conducteur_new') }}">changer de profil</a>
         </li>
     </ul>
 {% endblock %}

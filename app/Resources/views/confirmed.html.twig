@@ -1,0 +1,38 @@
+{% extends "/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">choix profil</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">profil</h4>
+                </div>
+                <div class="modal-body">
+                    <li>
+
+                        <a href="{{ path('conducteur_new') }}">conducteur</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('passager_new') }}">passager</a>
+                    </li>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock fos_user_content %}

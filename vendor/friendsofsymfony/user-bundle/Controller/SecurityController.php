@@ -11,10 +11,12 @@
 
 namespace FOS\UserBundle\Controller;
 
+use FOS\UserBundle\Model\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
@@ -73,6 +75,8 @@ class SecurityController extends Controller
             'error' => $error,
             'csrf_token' => $csrfToken,
         ));
+
+
     }
 
     public function checkAction()
@@ -83,6 +87,7 @@ class SecurityController extends Controller
     public function logoutAction()
     {
         throw new \RuntimeException('You must activate the logout in your security firewall configuration.');
+
     }
 
     /**
@@ -97,4 +102,16 @@ class SecurityController extends Controller
     {
         return $this->render('@FOSUser/Security/login.html.twig', $data);
     }
+
+    public function confirmedAction(Request $request)
+    {
+
+
+
+        return $this->render('@FOSUser/Registration/confirmed.html.twig', array(
+            'user' => $user,
+            'targetUrl' => $this->getTargetUrlFromSession($request->getSession()),
+        ));
+    }
+
 }

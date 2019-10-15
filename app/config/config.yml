@@ -16,10 +16,17 @@ security:
             security: false
 
         main:
+
+
             pattern: ^/
             form_login:
                 provider: fos_userbundle
                 #csrf_token_generator: security.crsf.token_manager
+                default_target_path: /testConfirmed
+
+
+
+
             logout:     true
             anonymous:  true
 
@@ -69,6 +76,7 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes: ['bootstrap_4_layout.html.twig']
 
 # Doctrine Configuration
 doctrine:
@@ -112,5 +120,9 @@ fos_user:
     from_email:
         address: "123@dup.com"
         sender_name: 'TutoFOSUserBundle'
+    registration:
+        form:
+            type: AppBundle\Form\RegistrationType
+
 
 
