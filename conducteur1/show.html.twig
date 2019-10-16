@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Conducteur1</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ conducteur1.id }}</td>
+                <td>{{ conducteur1.profil }}</td>
+                <td>{{ conducteur1.passager }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('conducteur1_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('conducteur1_edit', { 'id': conducteur1.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
