@@ -43,5 +43,12 @@ class DefaultController extends Controller
         return $this->render('/confirmed.html.twig');
     }
 
+    /**
+     * @Route("/passager/listsessions", name="listSessions")
+     */
+    public function listSessions(Request $request)
+    {
+        return $this->render('passager/listsessions.html.twig');
+    }
 }
 

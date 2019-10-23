@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as FosUser;
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Conducteur;
 
 /**
  * @ORM\Entity
@@ -16,6 +17,7 @@ class User extends FosUser
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OneToMany(targetEntity="App\Entity\Conducteur", mappedBy="author")
      */
     protected $id;
 
@@ -76,6 +78,10 @@ class User extends FosUser
         parent::__construct();
     }
 
+    public function getFullName()
+    {
+        return "{this->firstName} {this->lastName}";
+    }
 
 }
 ?>

@@ -1,22 +1,35 @@
 {% extends "/layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+
+{% endblock %}
 
 {% block body %}
+
+<div class="container-fluid">
+    <div class="row bg">
+        <div class="col-md-3 bg">&nbsp;</div>
+        <div class="col-md-6 bg mx-auto mt-5">
+            <div class="w-300 mx-auto shadow p-3 mb-5  rounded ">
+
     <h1>Conducteurs list</h1>
 
-    <table>
+                <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Typevoiture</th>
-                <th>Nbplaces</th>
-                <th>Date</th>
-                <th>Heure</th>
-                <th>Actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Type de voiture</th>
+                <th scope="col">Nombre de places</th>
+                <th scope="col">Date</th>
+                <th scope="col">Heure</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for conducteur in conducteurs %}
             <tr>
+                <th scope="row">1</th>
                 <td><a href="{{ path('conducteur_show', { 'id': conducteur.id }) }}">{{ conducteur.id }}</a></td>
                 <td>{{ conducteur.typevoiture }}</td>
                 <td>{{ conducteur.nbplaces }}</td>
@@ -37,9 +50,13 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('conducteur_new') }}">Create a new conducteur</a>
-        </li>
-    </ul>
+                    <ul>
+                        <li>
+                            <a href="{{ path('conducteur_new') }}">Créer une nouvelle session</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

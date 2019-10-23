@@ -11,21 +11,7 @@
 </head>
 <body>
 
-<header>
-
-    <div class="zoom">
-        <div>
-            <img id="logo" src="{{ asset('logo.PNG') }}">
-            <img id="region" src="{{ asset('region.png') }}">
-        </div>
-
-
-
-    </div>
-
-
-
-</header>
+  {% include 'partials/header.html.twig' %}
 <div>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |

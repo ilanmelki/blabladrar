@@ -1,15 +1,15 @@
 {% extends "/layout.html.twig" %}
 
 {% block body %}
-    <h1>{{ app.user.username }}</h1>
+    <h1>Passagers list</h1>
 
 
     <table>
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for passager in passagers %}

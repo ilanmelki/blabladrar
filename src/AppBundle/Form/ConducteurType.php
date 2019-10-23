@@ -13,7 +13,7 @@ class ConducteurType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('typevoiture')->add('nbplaces')->add('date')->add('heure')->add('profil')->add('passager');
+        $builder->add('typevoiture')->add('nbplaces')->add('date')->add('heure');
     }/**
      * {@inheritdoc}
      */

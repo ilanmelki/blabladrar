@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne as ManyToOne;
 use Doctrine\ORM\Mapping\JoinColumn as JoinColumn;
+use FOS\UserBundle\Model\User as FosUser;
 
 /**
  * Conducteur
@@ -22,16 +23,7 @@ class Conducteur
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    /**
-     * @ManyToOne(targetEntity="Passager")
-     * @JoinColumn(name="passager_id", referencedColumnName="id")
-     */
-    private $passager;
-    /**
-     * @ManyToOne(targetEntity="Profil")
-     * @JoinColumn(name="profil_id", referencedColumnName="id")
-     */
-    private $profil;
+
     /**
      * @var string
      *
@@ -62,10 +54,21 @@ class Conducteur
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+
+    private $author;
+
+
+
+    /**
      * Get id
      *
      * @return int
      */
+
+
     public function getId()
     {
         return $this->id;
@@ -217,6 +220,31 @@ class Conducteur
     public function getProfil()
     {
         return $this->profil;
+    }
+
+
+    /**
+     * Set author
+     *
+     * @param string $author
+     *
+     * @return Conducteur
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 
 }

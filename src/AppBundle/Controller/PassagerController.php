@@ -34,7 +34,7 @@ class PassagerController extends Controller
     /**
      * Creates a new passager entity.
      *
-     * @Route("/new", name="passager_new")
+     * @Route("/user/new", name="passager_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -133,4 +133,7 @@ class PassagerController extends Controller
             ->getForm()
         ;
     }
+
+
+
 }
