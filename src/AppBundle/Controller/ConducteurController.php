@@ -42,8 +42,11 @@ class ConducteurController extends Controller
         $conducteur = new Conducteur();
         $form = $this->createForm('AppBundle\Form\ConducteurType', $conducteur);
         $form->handleRequest($request);
+        $user = $this->getUser();
+
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $conducteur->setAuthor($user);
             $em = $this->getDoctrine()->getManager();
             $em->persist($conducteur);
             $em->flush();
