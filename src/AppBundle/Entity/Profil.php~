@@ -135,4 +135,56 @@ class Profil
     {
         return $this->adresse;
     }
+
+    /**
+     * Set conducteur
+     *
+     * @param \AppBundle\Entity\Conducteur $conducteur
+     *
+     * @return Profil
+     */
+    public function setConducteur(\AppBundle\Entity\Conducteur $conducteur = null)
+    {
+        $this->conducteur = $conducteur;
+
+        return $this;
+    }
+
+    /**
+     * Get conducteur
+     *
+     * @return \AppBundle\Entity\Conducteur
+     */
+    public function getConducteur()
+    {
+        return $this->conducteur;
+    }
+
+    /**
+     * Set passager
+     *
+     * @param \AppBundle\Entity\Passager $passager
+     *
+     * @return Profil
+     */
+    public function setPassager(\AppBundle\Entity\Passager $passager = null)
+    {
+        $this->passager = $passager;
+
+        return $this;
+    }
+
+    /**
+     * Get passager
+     *
+     * @return \AppBundle\Entity\Passager
+     */
+    public function getPassager()
+    {
+        return $this->passager;
+    }
+    public function __toString()
+    {
+        return $this->id.'';
+    }
 }

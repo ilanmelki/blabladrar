@@ -2,9 +2,12 @@
 
 namespace AppBundle\Form;
 
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
+
 
 class ConducteurType extends AbstractType
 {
@@ -13,7 +16,7 @@ class ConducteurType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('typevoiture')->add('nbplaces')->add('date')->add('heure');
+        $builder->add('typevoiture',null,array('label' => 'Type de voiture', 'required'=>true))->add('nbplaces')->add('adresse')->add('date')->add('heure');
     }/**
      * {@inheritdoc}
      */

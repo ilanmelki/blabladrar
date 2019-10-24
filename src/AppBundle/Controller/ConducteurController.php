@@ -3,9 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Conducteur;
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * Conducteur controller.
@@ -24,11 +26,28 @@ class ConducteurController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $conducteurs = $em->getRepository('AppBundle:Conducteur')->findAll();
+        $conducteurs = $em->getRepository('AppBundle:Conducteur')->findBy(array('author'=>22));
+
 
         return $this->render('conducteur/index.html.twig', array(
             'conducteurs' => $conducteurs,
         ));
+    }
+    /**
+     * Finds and displays a conducteur events
+     *
+     * @Route("/event/{id}", name="conducteur_eventconducteur")
+     * @Method("GET")
+     */
+    public function eventAction(User $user)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $conducteurs = $em->getRepository('AppBundle:Conducteur')->findBy(array('author'=>$user));
+
+
+
+        return $this->render('conducteur/eventconducteur.html.twig', array('user'=>$user, 'conducteurs'=>$conducteurs));
     }
 
     /**
@@ -43,6 +62,7 @@ class ConducteurController extends Controller
         $form = $this->createForm('AppBundle\Form\ConducteurType', $conducteur);
         $form->handleRequest($request);
         $user = $this->getUser();
+
 
 
         if ($form->isSubmitted() && $form->isValid()) {

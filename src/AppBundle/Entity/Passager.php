@@ -5,6 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne as ManyToOne;
 use Doctrine\ORM\Mapping\JoinColumn as JoinColumn;
+use FOS\UserBundle\Model\User as FosUser;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Passager
@@ -22,11 +24,28 @@ class Passager
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+
+    private $user;
+
+
+
     /**
      * @ManyToOne(targetEntity="Conducteur")
      * @JoinColumn(name="conducteur_id", referencedColumnName="id")
      */
     private $conducteur;
+
+    public function __construct()
+    {
+        $this->user = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -64,5 +83,31 @@ class Passager
     public function __toString()
     {
         return $this->id.'';
+    }
+
+
+
+    /**
+     * Set user
+     *
+     * @param \App\Entity\User $user
+     *
+     * @return Passager
+     */
+    public function setUser(\App\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \App\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

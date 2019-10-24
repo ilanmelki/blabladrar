@@ -44,6 +44,9 @@ class PassagerController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $users = $this->getUser();
+            $passager->setUsers($users)
+                ->setPassager($passager);
             $em = $this->getDoctrine()->getManager();
             $em->persist($passager);
             $em->flush();

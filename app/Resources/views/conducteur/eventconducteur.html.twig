@@ -1,0 +1,56 @@
+{% extends "/layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Liste de vos sessions  {{ conducteurs[0].author.firstname }} </h1>
+    <div class="container mx-auto bg-dark mt-5 shadow p-3 mb-5 bg-white rounded">
+
+
+        <table class="table table-striped table-dark w-50 mx-auto shadow p-3 mb-5 rounded">
+            <thead class="bg-info">
+            <tr>
+                <th class="text-center">Id</th>
+                <th class="center">Date</th>
+                <th class="center">Heure de départ</th>
+                <th class="center">Type de voiture</th>
+                <th class="center">Adresse</th>
+                <th class="center">Nombre de places disponibles</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for conducteur in conducteurs %}
+                <tr>
+                    <td><a href="{{ path('conducteur_show', { 'id': conducteur.id }) }}">{{ conducteur.id }}</a></td>
+                    <td>{% if conducteur.date %}{{ conducteur.date|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if conducteur.heure %}{{ conducteur.heure|date('H:i:s') }}{% endif %}</td>
+                    <td>{{ conducteur.typevoiture }}</td>
+                    <td>{{ conducteur.adresse }}</td>
+                    <td>{{ conducteur.nbplaces }}</td>
+
+                    <td>
+                        <ul class="nav">
+                            <li class="nav-items">
+                                <a class="mr-5 btn btn-sm btn-success " href="{{ path('conducteur_show', { 'id': conducteur.id }) }}">show</a>
+                            </li>
+                            <li class="nav-items">
+                                <a class="mt-2 btn btn-sm btn-success" href="{{ path('conducteur_edit', { 'id': conducteur.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul class="nav">
+            <li class="nav-items">
+                <a class="nav-link text-white btn btn-sm btn-dark" href="{{ path('conducteur_new') }}">Create a new reservation</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

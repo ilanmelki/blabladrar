@@ -1,39 +1,62 @@
 {% extends "/layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+
+{% endblock %}
 
 {% block body %}
-    <h1>Passagers list</h1>
 
+    <div class="container-fluid">
+        <div class="row bg">
+            <div class="col-md-3 bg">&nbsp;</div>
+            <div class="col-md-6 bg mx-auto mt-5">
+                <div class="w-300 mx-auto shadow p-3 mb-5  rounded ">
 
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for passager in passagers %}
-            <tr>
-                <td><a href="{{ path('passager_show', { 'id': passager.id }) }}">{{ passager.id }}</a></td>
-                <td>
+                    <h1>Conducteurs list</h1>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Type de voiture</th>
+                            <th scope="col">Nombre de places</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Heure</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for conducteur in conducteurs %}
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><a href="{{ path('conducteur_show', { 'id': conducteur.id }) }}">{{ conducteur.id }}</a></td>
+                                <td>{{ conducteur.typevoiture }}</td>
+                                <td>{{ conducteur.nbplaces }}</td>
+                                <td>{% if conducteur.date %}{{ conducteur.date|date('Y-m-d') }}{% endif %}</td>
+                                <td>{% if conducteur.heure %}{{ conducteur.heure|date('H:i:s') }}{% endif %}</td>
+                                <td>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('conducteur_show', { 'id': conducteur.id }) }}">show</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('conducteur_edit', { 'id': conducteur.id }) }}">edit</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
                     <ul>
                         <li>
-                            <a href="{{ path('passager_show', { 'id': passager.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('passager_edit', { 'id': passager.id }) }}">edit</a>
-                            <a href="{{ url('conducteur_index') }}">Home</a>
+                            <a href="{{ path('conducteur_new') }}">Créer une nouvelle session</a>
                         </li>
                     </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('passager_new') }}">Create a new passager</a>
-        </li>
-    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

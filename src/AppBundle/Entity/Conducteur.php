@@ -61,6 +61,14 @@ class Conducteur
     private $author;
 
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255)
+     */
+    private $adresse;
+
+
 
     /**
      * Get id
@@ -171,7 +179,7 @@ class Conducteur
     }
     public function __toString()
     {
-        return $this->id.'';
+        return $this->typevoiture.' '.$this->nbplaces.' places disponibles';
     }
 
     /**
@@ -246,5 +254,31 @@ class Conducteur
     {
         return $this->author;
     }
+
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Conducteur
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
 
 }

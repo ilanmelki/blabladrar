@@ -83,5 +83,4 @@ class User extends FosUser
         return "{this->firstName} {this->lastName}";
     }
 
-
 }

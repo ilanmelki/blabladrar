@@ -13,7 +13,7 @@ class PassagerType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('conducteur');
+        $builder->add('conducteur')->add('user');
     }
 /**
      * {@inheritdoc}

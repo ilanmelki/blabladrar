@@ -22,6 +22,16 @@ class Passager
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+
+
+    /**
+    * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="conducteur")
+     *@JoinColumn(name="user_id", referencedColumnName="id")
+    */
+    private $user;
+
+
     /**
      * @ManyToOne(targetEntity="Conducteur")
      * @JoinColumn(name="conducteur_id", referencedColumnName="id")
@@ -64,5 +74,29 @@ class Passager
     public function __toString()
     {
         return $this->id.'';
+    }
+
+    /**
+     * Set users
+     *
+     * @param \App\Entity\User $users
+     *
+     * @return Passager
+     */
+    public function setUsers(\App\Entity\User $users = null)
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
+    /**
+     * Get users
+     *
+     * @return \App\Entity\User
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }
