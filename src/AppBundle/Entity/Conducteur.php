@@ -179,7 +179,7 @@ class Conducteur
     }
     public function __toString()
     {
-        return $this->typevoiture.' '.$this->nbplaces.' places disponibles';
+        return 'voiture: '.$this->typevoiture.' nombre de place(s): '.$this->nbplaces. ' conducteur: '. $this->author;
     }
 
     /**

@@ -1,12 +1,10 @@
-{% extends "/layout.html.twig" %}
-{% block stylesheets %}
-    {{ parent() }}
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+{{ parent() }}
+<link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
 
 {% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Liste de vos sessions  {{ conducteurs[0].author.firstname }} </h1>
+    <h1 class="text-center">Liste de vos sessions  {{ passagers[0].author_id.firstname }} </h1>
     <div class="container mx-auto bg-dark mt-5 shadow p-3 mb-5 bg-white rounded">
 
 

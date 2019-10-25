@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Passager;
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -32,6 +33,23 @@ class PassagerController extends Controller
     }
 
     /**
+     * Finds and displays a conducteur events
+     *
+     * @Route("/event/{id}", name="passager_eventpassager")
+     * @Method("GET")
+     */
+    public function eventAction(User $user)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $passager = $em->getRepository('AppBundle:Passager')->findBy(array('author'=>$user));
+
+
+
+        return $this->render('conducteur/eventpassager.html.twig', array('user'=>$user, 'passagers'=>$passagers));
+    }
+
+    /**
      * Creates a new passager entity.
      *
      * @Route("/user/new", name="passager_new")
@@ -42,11 +60,11 @@ class PassagerController extends Controller
         $passager = new Passager();
         $form = $this->createForm('AppBundle\Form\PassagerType', $passager);
         $form->handleRequest($request);
+        $user = $this->getUser();
+
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $users = $this->getUser();
-            $passager->setUsers($users)
-                ->setPassager($passager);
+            $passager->setAuthor($user);
             $em = $this->getDoctrine()->getManager();
             $em->persist($passager);
             $em->flush();

@@ -1,19 +1,18 @@
 {% extends "/layout.html.twig" %}
 
 {% block body %}
-    <h1>Passager creation</h1>
 
+<div class="container mx-auto bg-dark mt-5 shadow p-3 mb-5 bg-white rounded">
+    <h1>Réservation</h1>
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Réserver" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('passager_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('conducteur_new') }}">changer de profil</a>
-        </li>
-    </ul>
+
+
+
+
+            <a href="{{ path('conducteur_new') }}">Changer de profil</a>
+</div>
 {% endblock %}

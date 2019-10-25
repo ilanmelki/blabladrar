@@ -32,7 +32,7 @@ class Passager
      * @ORM\JoinColumn(nullable=false)
      */
 
-    private $user;
+    private $author;
 
 
 
@@ -94,9 +94,9 @@ class Passager
      *
      * @return Passager
      */
-    public function setUser(\App\Entity\User $user = null)
+    public function setAuthor($author)
     {
-        $this->user = $user;
+        $this->author = $author;
 
         return $this;
     }
